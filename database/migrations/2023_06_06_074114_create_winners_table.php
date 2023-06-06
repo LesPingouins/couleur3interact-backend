@@ -11,22 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        /*
-        Schema::create('role_users', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedInteger('role_id');
-            $table->primary(['user_id', 'role_id']);
+        Schema::create('winners', function (Blueprint $table) {
+            $table->increments("id");
+            $table->string("misc")->nullable();
+            $table->boolean('is_active');
+            $table->timestamps();
+            $table->integer('poll_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->foreign('poll_id')
+                ->references('id')
+                ->on('polls')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreign('role_id')
-                ->references('id')
-                ->on('roles')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-        });*/
+        });
     }
 
     /**
@@ -34,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('role_users');
+        Schema::dropIfExists('winners');
     }
 };

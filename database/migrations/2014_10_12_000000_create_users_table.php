@@ -13,12 +13,27 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments("id");
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('username')->unique();
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('email')->nullable()->unique();
             $table->string('password');
+            $table->string('image')->nullable();
+            $table->string('address')->nullable();
+            $table->string('address_code')->nullable();
+            $table->string('city')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('misc')->nullable();
+            $table->boolean('is_active');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('role_id')->unsigned();
+            $table->foreign('role_id')
+                ->references('id')
+                ->on('roles')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 

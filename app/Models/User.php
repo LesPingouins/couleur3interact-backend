@@ -2,23 +2,35 @@
 
 namespace App\Models;
 
-use Orchid\Filters\Types\Like;
-use Orchid\Filters\Types\Where;
-use Orchid\Filters\Types\WhereDateStartEnd;
-use Orchid\Platform\Models\User as Authenticatable;
+
+use App\Models\Role;
+
+use Illuminate\Database\Eloquent\Model;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
+    use HasFactory;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
+        'username',
+        'firstname',
+        'lastname',
+        'firstname',
         'email',
-        'password',
-        'permissions',
+        'image',
+        'address',
+        'address_code',
+        'city',
+        'phone',
+        'misc',
+        'is_active',
     ];
 
     /**
@@ -48,11 +60,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $allowedFilters = [
-           'id'         => Where::class,
-           'name'       => Like::class,
-           'email'      => Like::class,
-           'updated_at' => WhereDateStartEnd::class,
-           'created_at' => WhereDateStartEnd::class,
+        'id'         => Where::class,
+        'name'       => Like::class,
+        'email'      => Like::class,
+        'updated_at' => WhereDateStartEnd::class,
+        'created_at' => WhereDateStartEnd::class,
     ];
 
     /**
@@ -67,4 +79,9 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+    public function roles()
+    {
+        return $this->hasMany(Role::class);
+    }
 }

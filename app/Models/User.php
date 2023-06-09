@@ -80,8 +80,8 @@ class User extends Authenticatable
         'created_at',
     ];
 
-    public function roles()
+    public function role()
     {
-        return $this->hasMany(Role::class);
+        return $this->belongsTo(Role::class);
     }
 }

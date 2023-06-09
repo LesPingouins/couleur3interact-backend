@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class TypesTableSeeder extends Seeder
+class SettingsTableSeeder extends Seeder
 {
     private function randDate()
     {
@@ -20,19 +20,33 @@ class TypesTableSeeder extends Seeder
     public function run(): void
     {
         $date = $this->randDate();
-        DB::table("types")->insert([
+        DB::table("settings")->insert([
             "name_of" => "Sondage",
-            "slug" => "poll",
-            "priority" => 2,
+            "slug" => "notif_poll",
             "is_active"  => 1,
             "created_at"  => $date,
             "updated_at"  => $date,
         ]);
 
-        DB::table("types")->insert([
+        DB::table("settings")->insert([
+            "name_of" => "Annonce",
+            "slug" => "notif_announcement",
+            "is_active"  => 1,
+            "created_at"  => $date,
+            "updated_at"  => $date,
+        ]);
+
+        DB::table("settings")->insert([
             "name_of" => "Concours",
-            "slug" => "contest",
-            "priority" => 1,
+            "slug" => "notif_contest",
+            "is_active"  => 1,
+            "created_at"  => $date,
+            "updated_at"  => $date,
+        ]);
+
+        DB::table("settings")->insert([
+            "name_of" => "Dark Mode",
+            "slug" => "option_darkmode",
             "is_active"  => 1,
             "created_at"  => $date,
             "updated_at"  => $date,

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->increments("id");
-            $table->integer("no");
+            $table->integer("no")->nullable();
             $table->string("name_of");
             $table->boolean('is_answer');
             $table->string("misc")->nullable();

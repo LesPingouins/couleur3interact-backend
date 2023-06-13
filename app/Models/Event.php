@@ -46,4 +46,14 @@ class Event extends Model
     {
         return $query->where('id', $value);
     }
+
+    public function scopeGetLatestActiveEvent($query)
+    {
+        return $query->where('is_active', 'true')->latest()->first();
+    }
+
+    public function participants()
+    {
+        return $this->hasMany(Participant::class);
+    }
 }

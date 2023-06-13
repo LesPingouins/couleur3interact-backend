@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
+use Illuminate\Support\Facades\Session;
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -29,6 +31,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = Auth::user();
+
+        Session::put('username', $user->username);
+        Session::put('firstname', $user->firstname);
+        Session::put('lastname', $user->lastname);
+        Session::put('id', $user->id);
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -43,6 +52,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

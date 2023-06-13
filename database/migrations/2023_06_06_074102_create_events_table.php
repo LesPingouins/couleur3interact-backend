@@ -11,16 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('participants', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->increments("id");
-            $table->string("misc")->nullable();
+            $table->string("name_of");
+            $table->string("description")->nullable();
+            $table->string("image")->nullable();
+            $table->string("question");
+            $table->integer("duration");
+            $table->boolean('is_predefined');
+            $table->integer("misc")->nullable();
             $table->boolean('is_active');
             $table->timestamps();
-            $table->integer('event_id')->unsigned();
+            $table->integer('type_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->foreign('event_id')
+            $table->foreign('type_id')
                 ->references('id')
-                ->on('events')
+                ->on('types')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreign('user_id')
@@ -36,6 +42,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('participants');
+        Schema::dropIfExists('events');
     }
 };

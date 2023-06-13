@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string("misc")->nullable();
             $table->boolean('is_active');
             $table->timestamps();
-            $table->integer('poll_id')->unsigned();
+            $table->integer('event_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->foreign('poll_id')
+            $table->foreign('event_id')
                 ->references('id')
-                ->on('polls')
+                ->on('events')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreign('user_id')

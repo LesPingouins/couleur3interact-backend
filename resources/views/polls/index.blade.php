@@ -12,12 +12,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Utilisateurs</h1>
+                            <h1 class="m-0">Sondages</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="{{ route('chat') }}">Accueil</a></li>
-                                <li class="breadcrumb-item active">Utilisateurs</li>
+                                <li class="breadcrumb-item active">Sondage</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -34,7 +34,7 @@
                             <div class="card">
                                 <div class="card-header row align-items-center">
                                     <div class="col-6">
-                                        <h3 class="card-title">Liste des utilisateurs</h3>
+                                        <h3 class="card-title">Liste des sondages</h3>
                                     </div>
 
                                     <div class="col-3">
@@ -53,9 +53,9 @@
                                         </div>
                                     </div>
                                     <div class="col-3">
-                                        <a class="btn btn-success" href="{{ route('users.create') }}" role="button"><i
+                                        <a class="btn btn-success" href="{{ route('polls.create') }}" role="button"><i
                                                 class="fa-solid fa-plus align-middle"></i> Ajouter un
-                                            utilisateur</a>
+                                            sondage</a>
                                     </div>
                                 </div>
                                 <!-- /.card-header -->
@@ -64,45 +64,42 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Username</th>
-                                                <th>Prénom</th>
-                                                <th>Nom</th>
-                                                <th>Email</th>
-                                                <th>Rôle</th>
+                                                <th>Titre</th>
+                                                <th>Question</th>
+                                                <th>Durée</th>
+                                                <th>Type</th>
+                                                <th>Créateur</th>
                                                 <th>Actif ?</th>
                                                 <th>Modifier</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($users as $user)
+                                            @foreach ($events as $event)
                                                 <tr>
-                                                    <td>{{ $user->id }}</td>
-                                                    <td>{{ $user->username }}</td>
-                                                    <td>{{ $user->firstname }}</td>
-                                                    <td>{{ $user->lastname }}</td>
-                                                    <td>{{ $user->email }}</td>
-                                                    <td>{{ $user->role->name_of }}</td>
+                                                    <td>{{ $event->id }}</td>
+                                                    <td>{{ $event->name_of }}</td>
+                                                    <td>{{ $event->question }}</td>
+                                                    <td>{{ $event->duration }}</td>
+                                                    <td>Sondage</td>
+                                                    <td>{{ $event->user->username }}</td>
                                                     <td>
 
                                                         <div class="custom-control custom-switch">
                                                             <input type="checkbox"
-                                                                {{ $user->is_active ? 'checked' : '' }}
+                                                                {{ $event->is_active ? 'checked' : '' }}
                                                                 class="custom-control-input"
-                                                                data-id="{{ $user->id }}"
-                                                                id="slider{{ $user->id }}" />
+                                                                data-id="{{ $event->id }}"
+                                                                id="slider{{ $event->id }}" />
                                                             <label class="custom-control-label"
-                                                                for="slider{{ $user->id }}"></label>
+                                                                for="slider{{ $event->id }}"></label>
                                                         </div>
                                                     </td>
                                                     <td><a class="btn btn-primary"
-                                                            href="{{ route('users.edit', ['id' => $user->id]) }}"
+                                                            href="{{ route('polls.edit', ['id' => $event->id]) }}"
                                                             role="button"><i
                                                                 class="fa-solid fa-pen align-middle"></i></a>
                                                     </td>
-
-
-
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -122,41 +119,5 @@
         <x-footer />
     </div>
     <!-- ./wrapper -->
-    @push('scripts')
-        <script type="text/javascript">
-            let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            const inputs = document.querySelectorAll("input[type=checkbox]");
 
-            inputs.forEach(input => {
-
-                $(input).on('change', function(e) {
-                    let id = $(this).attr("data-id");
-                    let url = "";
-
-                    if (e.target.checked) {
-                        url = "{{ route('users.active', ':id') }}";
-                    } else {
-                        url = "{{ route('users.delete', ':id') }}";
-                    }
-
-                    url = url.replace(':id', id);
-                    $.ajax({
-                        type: 'POST',
-                        url: url,
-                        headers: {
-                            'X-CSRF-Token': '{{ csrf_token() }}',
-                        },
-                        data: {
-                            id: id,
-                            _token: CSRF_TOKEN,
-                            message: $(".getinfo").val()
-                        },
-                        success: function(result) {
-
-                        }
-                    });
-                });
-            });
-        </script>
-    @endpush
 </x-app-layout>

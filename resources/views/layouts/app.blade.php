@@ -55,6 +55,7 @@
 </script>
 
 <!-- AdminLTE App -->
-<script src="{{ asset('storage/js/adminlte.js') }}"></script>
+<script src="{{ asset('storage/js/adminlte.js') }}" defer></script>
+@stack('scripts')
 
 </html>

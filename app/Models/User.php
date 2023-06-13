@@ -13,6 +13,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class User extends Authenticatable
 {
     use HasFactory;
+
+    public $timestamps = true;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -83,5 +86,15 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    public function settings()
+    {
+        return $this->hasMany(Setting::class);
     }
 }

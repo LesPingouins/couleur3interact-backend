@@ -12,16 +12,16 @@ class UserResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray($test): array
+    public function toArray($data): array
     {
-        dd($test);
         return [
-            'id' => $test->id,
-            'username' => $test->username,
-            'firstname' => $test->firstname,
-            'lastname' => $test->lastname,
-            'email' => $test->email,
-            'role_id' => $test->role_id,
+            'id' => $data->id,
+            'username' => $data->username,
+            'firstname' => $data->firstname,
+            'lastname' => $data->lastname,
+            'email' => $data->email,
+            'image' => $data->image,
+            'role_id' => $data->role_id,
         ];
     }
 }

@@ -16,17 +16,19 @@ class MessageSent implements ShouldBroadcastNow
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $message;
+    public $username;
     /**
      * Create a new event instance.
      */
-    public function __construct($message)
+    public function __construct($message, $username)
     {
         $this->message = $message;
+        $this->username = $username;
     }
 
     public function broadcastWith()
     {
-        return ['message' => $this->message];
+        return ['message' => $this->message, 'username' => $this->username];
     }
 
     /**

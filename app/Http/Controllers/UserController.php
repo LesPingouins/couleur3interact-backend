@@ -51,13 +51,33 @@ class UserController extends Controller
         return Redirect::to('/users')->withOk("L'utilisateur a été crée.");
     }
 
-    public function edit(Request $request): View
+    public function edit($id): View
     {
-        $user = User::find($request->id);
+        $roles = Role::all();
+        $user = User::find($id);
+
 
         return view('users.edit', [
             'user' => $user,
+            'roles' => $roles,
         ]);
+    }
+
+    public function update(Request $request)
+    {
+        $user = User::find(1);
+        $user->username = $request->username;
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role_id = $request->role;
+        if ($request->is_active === "on") $user->is_active = true;
+        else $user->is_active = false;
+
+        $user->save();
+
+        return Redirect::to('/users')->withOk("L'utilisateur a été modifié.");
     }
 
     public function active(Request $request)

@@ -34,58 +34,63 @@
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Quick Example</h3>
+                                    <h3 class="card-title">Modifier un utilisateur</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form>
+                                <form method="POST" action="{{route('users.update')}}" accept-charset="UTF-8">
+                                    @csrf
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                placeholder="Enter email">
+                                            <label for="exampleInputEmail1">Username</label>
+                                            <input type="text" class="form-control" name="username" value="{{ $user->username }}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Password">
+                                            <label for="exampleInputEmail1">Prénom</label>
+                                            <input type="text" class="form-control" name="firstname" value="{{ $user->firstname }}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputFile">File input</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input"
-                                                        id="exampleInputFile">
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose
-                                                        file</label>
-                                                </div>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">Upload</span>
-                                                </div>
-                                            </div>
+                                            <label for="exampleInputEmail1">Nom</label>
+                                            <input type="text" class="form-control" name="lastname" value="{{ $user->lastname }}">
                                         </div>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email</label>
+                                            <input type="email" class="form-control" name="email" value="{{ $user->email }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Mot de passe</label>
+                                            <input type="password" class="form-control" name="password" value="">
+                                        </div>
+                                        <select name="role" class="form-control">
+                                            <option value="{{ $user->role_id }}">{{ $user->role->name_of }}</option>
+                                            @foreach ($roles as $role)
+                                            <option value="{{ $role->role_id }}">{{ $role->name_of }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" {{ $user->is_active ? 'checked' : '' }} class="custom-control-input" data-id="{{ $user->id }}" id="slider{{ $user->id }}" />
+                                            <label class="custom-control-label" for="slider{{ $user->id }}">Activer l'utilisateur</label>
                                         </div>
                                     </div>
-                                    <!-- /.card-body -->
 
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </form>
                             </div>
-                            <!-- /.card -->
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Envoyer</button>
+                            </div>
+                            </form>
                         </div>
+                        <!-- /.card -->
                     </div>
-                    <!-- /.row (main row) -->
-                </div><!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-        <x-footer />
+                </div>
+                <!-- /.row (main row) -->
+        </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <x-footer />
     </div>
     <!-- ./wrapper -->
 

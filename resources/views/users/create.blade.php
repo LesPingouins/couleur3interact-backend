@@ -18,7 +18,7 @@
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="{{ route('chat') }}">Accueil</a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('users') }}">Utilisateurs</a></li>
-                                <li class="breadcrumb-item active">Edition</li>
+                                <li class="breadcrumb-item active">Création</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->

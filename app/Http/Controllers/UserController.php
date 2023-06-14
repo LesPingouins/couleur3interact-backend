@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Resources\UserResource;
 use Throwable;
+use App\Http\Requests\UserRequest;
+use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -21,6 +24,31 @@ class UserController extends Controller
         return view('users.index', [
             'users' => $users,
         ]);
+    }
+
+    public function create()
+    {
+        $roles = Role::all();
+        return view('users.create', [
+            'roles' => $roles,
+        ]);
+    }
+
+    public function store(UserRequest $request)
+    {
+        $user = new User();
+        $user->username = $request->username;
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role_id = $request->role;
+        if ($request->is_active === "on") $user->is_active = true;
+        else $user->is_active = false;
+
+        $user->save();
+
+        return Redirect::to('/users')->withOk("L'utilisateur a été crée.");
     }
 
     public function edit(Request $request): View

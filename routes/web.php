@@ -36,6 +36,7 @@ Route::get('/roles', [RoleController::class, 'index'])->middleware(['auth', 'ver
 Route::middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('users');
     Route::get('/users/form/add', [UserController::class, 'create'])->middleware(['auth', 'verified'])->name('users.create');
+    Route::post('/users/store', [UserController::class, 'store'])->middleware(['auth', 'verified'])->name('users.store');
     Route::get('/users/form/edit/{id}', [UserController::class, 'edit'])->middleware(['auth', 'verified'])->name('users.edit');
     Route::post('/users/delete/{id}', [UserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('users.delete');
     Route::post('/users/active/{id}', [UserController::class, 'active'])->middleware(['auth', 'verified'])->name('users.active');

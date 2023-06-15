@@ -12,4 +12,11 @@ class AnswerController extends Controller
     {
         return Answer::GetAnswersFromAPoll($id);
     }
+
+    public function getSameAnswersFromAPoll($id)
+    {
+        $answers = Answer::where('event_id', $id)->get();
+
+        dd($answers);
+    }
 }

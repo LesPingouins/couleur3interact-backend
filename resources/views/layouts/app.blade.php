@@ -12,11 +12,11 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('storage/css/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome/css/all.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('storage/css/adminlte.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -46,16 +46,16 @@
 </body>
 
 <!-- jQuery -->
-<script src="{{ asset('storage/js/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('storage/js/jquery/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('js/jquery/jquery-ui.min.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
 
 <!-- AdminLTE App -->
-<script src="{{ asset('storage/js/adminlte.js') }}" defer></script>
+<script src="{{ asset('js/adminlte.js') }}" defer></script>
 @stack('scripts')
 
 </html>

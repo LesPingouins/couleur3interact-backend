@@ -9,7 +9,7 @@ use App\Models\Answer;
 use App\Models\Event;
 use App\Models\Type;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class PollController extends Controller
@@ -63,6 +63,7 @@ class PollController extends Controller
             }
         }
 
+
         $question = new PollResource($request->question);
 
         broadcast(new PollSent($question));
@@ -114,6 +115,43 @@ class PollController extends Controller
             }
         }
         return response('All polls disabled', 418)
-            ->header('Content-Type', 'text/plain');
+            ->header('Content-Type', 'application/json');
+    }
+
+    public function sendAnswerToAPoll(Request $request)
+    {
+        $answer = new Answer();
+
+        $answer->name_of = $request->answer;
+        $answer->is_answer = false;
+        $answer->is_active = true;
+        $answer->event_id = $request->event_id;
+        $answer->user_id = $request->user_id;
+        $answer->save();
+
+        return response('Answer created', 201)
+            ->header('Content-Type', 'application/json');
+    }
+
+    public function getSameAnswersFromAPoll($id)
+    {
+        $answers = Answer::select("name_of")->where('event_id', $id)->get()->toArray();
+
+        $newArrayAnswers = [];
+        $arrayAnswersToReturn = [];
+
+        foreach ($answers as $key => $value) {
+            array_push($newArrayAnswers, $value["name_of"]);
+        }
+
+        foreach (array_count_values($newArrayAnswers) as $value => $key) {
+            if ($key >= 5) {
+                $arrayAnswersToReturn[$value] =  $key;
+            }
+        }
+
+        return response()->json([
+            'answers' => $arrayAnswersToReturn,
+        ]);
     }
 }

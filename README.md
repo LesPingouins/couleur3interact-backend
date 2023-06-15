@@ -1,66 +1,141 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<a name="retour-en-haut"></a>
+<h1 align="center">
+  <br>
+    
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://i.ibb.co/vchLtJP/color-noir-interact-vertical.png" alt="Markdownify" width="200"></a>
+  <br>
+  Couleur 3 Interact / Back-end
+  <br>
+</h1>
+
+<h4 align="center">Back-end pour l'application Couleur 3 Interact.
+    <br><br>
+    <a href="https://github.com/LesPingouins/couleur3interact-frontend" target="_blank">Voir le front-end</a>
+</h4>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="#a-propos">À propos du projet</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#utilisation">Utilisation</a> •
+  <a href="#roadmap">Roadmap</a> •
+  <a href="#contact">Contact</a> •
 </p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## A propos
+Dans le cadre du projet d'articulation de la HEIG-VD en Ingénierie des Médias. Notre équipe a fait le choix de travailler sur un projet de la RTS, plus précisément celui de la radio Couleur 3. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+L'objectif, imaginer la radio du futur, celle que nous aimerions construire et comment elle pourrait interagir avec son public.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Sur cette base nous avons alors développé une application de chat portable, qui pourrait se greffer sur n'importe quel site à l'aide de la balise iFrame.
 
-## Learning Laravel
+Ce back-end permet de faire fonctionner le chat grâce aux websockets (Pusher) mais aussi de faire la connexion avec la base de données. Il possède aussi une mini-application permettant de gérer le chat via plusieurs fonctionnalités. 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<p align="right">(<a href="#retour-en-haut">retour en haut</a>)</p>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Installation
+Pour cloner cette application, vous aurez besoin de [Git](https://git-scm.com/downloads), [Composer](https://getcomposer.org/download/), [Node.js](https://nodejs.org/en/download/) (qui vient avec [npm](http://npmjs.com)) et d'un serveur [PostgreSQL](https://www.postgresql.org/download/) installés sur votre ordinateur. Ensuite, exécutez ces lignes de commandes.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+# Cloner le repo
+$ git clone https://github.com/LesPingouins/couleur3interact-backend
 
-## Laravel Sponsors
+# Aller dans le répertoire
+$ cd couleur3interact-backend
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# Installation des dépendances
+$ composer i
+$ npm i
+```
 
-### Premium Partners
+Il vous faudra ensuite créer le fichier .env à la racine du projet
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Exemple provenant du repo de laravel : [.env](https://github.com/laravel/laravel/blob/10.x/.env.example)
 
-## Contributing
+Générer ensuite une clé d'application
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+# Génération de la clé
+$ php artisan key:generate
+```
 
-## Code of Conduct
+Modifier ensuite dans le .env vos informations de connexion à votre base de données PGSQL.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=[Votre base de données]
+DB_USERNAME=[Votre nom d'utilisateur]
+DB_PASSWORD=[Votre mot de passe]
+```
 
-## Security Vulnerabilities
+Dans certains cas, il se peut que vous n'ayez pas activé l'extension pgsql dans votre php.ini. Pour l'activer, rendez-vous dans votre fichier php.ini et trouvez la ligne de l'extension qui est en commentaire : ";extension=pgsql"
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Exécutez ensuite les migrations et les seeders
 
-## License
+```bash
+# Exécuter les migrations
+$ php artisan migrate
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Exécuter les seeders
+$ php artisan db:seed
+```
+
+Lancez ensuite les différents serveurs. Cela doit être exécuté dans plusieurs terminaux.
+```bash
+# Lancer le back-end
+$ php artisan serve
+$ npm run dev
+$ php artisan websockets:serve
+```
+<p align="right">(<a href="#retour-en-haut">retour en haut</a>)</p>
+
+## Utilisation
+Pour utiliser le back-end, rendez-vous ensuite sur un navigateur et entrez : http://127.0.0.1:8000/login
+
+Connectez-vous ensuite à l'aide de l'adresse mail d'un des utilisateurs qui a été généré dans votre base de données. 
+Le mot de passe associés aux utilisateurs est : "password" 😉
+
+Il se peut qu'en fonction de l'ordre d'exécution des serveurs l'iFrame du chat ne fonctionne plus.
+
+Pour régler ce soucis, rendez-vous dans "resources/views/dashboard.blade.php". Retrouvez ensuite la balise iFrame et remplacez le src par le lien du front-end.
+
+Vous pourrez alors gérer une partie du chat, pour voir les fonctionnalités possibles : <a href="#roadmap">Roadmap</a>
+
+Pour profiter pleinement de l'expérience Couleur 3, utilisez le [Couleur 3 Interact / Front-end](https://github.com/LesPingouins/couleur3interact-frontend) fourni par notre équipe. 
+
+<p align="right">(<a href="#retour-en-haut">retour en haut</a>)</p>
+
+## Roadmap
+- [x] Gestion des utilisateurs
+    - [x] Ajout
+    - [x] Modification
+    - [x] Suppression
+    - [ ] Bannissement
+- [x] Gestion des sondages
+- [x] Gestion des concours
+    - [x] Affichage
+    - [ ] Ajout
+    - [ ] Modification
+    - [ ] Suppression
+- [x] Gestion des rôles
+    - [x] Affichage
+    - [ ] Ajout
+    - [ ] Modification
+    - [ ] Suppression
+- [ ] Gestion des annonces
+- [ ] Gestion du chat
+- [ ] Gestion des paramètres (Notifications, Dark mode, ...)
+- [ ] Gestion des permissions
+
+<p align="right">(<a href="#retour-en-haut">retour en haut</a>)</p>
+
+## Contact
+La team Pingouin - HEIG-VD - Ingénierie des Médias
+
+Back-end : [Couleur 3 Interact / Back-end](https://github.com/LesPingouins/couleur3interact-backend)
+<br>
+Front-end : [Couleur 3 Interact / Front-end](https://github.com/LesPingouins/couleur3interact-frontend)
+
+<p align="right">(<a href="#retour-en-haut">retour en haut</a>)</p>

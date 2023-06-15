@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments("id");
             $table->integer("no")->nullable();
             $table->string("name_of");
-            $table->boolean('is_answer');
+            $table->boolean('is_right_answer');
             $table->string("misc")->nullable();
             $table->boolean('is_active');
             $table->timestamps();

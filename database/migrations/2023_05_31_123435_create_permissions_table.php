@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments("id");
-            $table->string('name_of');
+            $table->string('slug');
+            $table->string('name_of')->nullable();
             $table->string('misc')->nullable();
             $table->boolean('is_active');
             $table->timestamps();

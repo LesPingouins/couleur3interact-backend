@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('choices', function (Blueprint $table) {
             $table->increments("id");
-            $table->boolean('is_answer');
+            $table->boolean('is_right_choice');
             $table->string("misc")->nullable();
             $table->boolean('is_active');
             $table->timestamps();

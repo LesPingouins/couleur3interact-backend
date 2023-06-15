@@ -54,7 +54,7 @@ class PollController extends Controller
                 $answer = new Answer();
                 $answer->no = $count;
                 $answer->name_of = $choice;
-                $answer->is_answer = false;
+                $answer->is_right_answer = false;
                 $answer->is_active = true;
                 $answer->event_id = $event->id;
                 $answer->user_id = request()->session()->get('id');
@@ -123,8 +123,8 @@ class PollController extends Controller
         $answer = new Answer();
 
         $answer->name_of = $request->answer;
-        $answer->is_answer = false;
         $answer->is_active = true;
+        $answer->is_right_answer = false;
         $answer->event_id = $request->event_id;
         $answer->user_id = $request->user_id;
         $answer->save();

@@ -27,6 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', [UserController::class, 'login']);
 Route::post('chat', [ChatController::class, 'store']);
 
+//Users
+Route::get('users/{id}', [UserController::class, 'getAUser']);
+
 //Contests
 Route::get('contests', [ContestController::class, 'getContests']);
 Route::get('contests/{id}', [ContestController::class, 'getAContest']);

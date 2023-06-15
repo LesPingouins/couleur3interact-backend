@@ -63,22 +63,63 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $user = User::find(1);
-        $user->username = $request->username;
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role_id = $request->role;
-        if ($request->is_active === "on") $user->is_active = true;
-        else $user->is_active = false;
+        $user = User::find($id);
+
+        // Vérifier si chaque champ a une valeur différente de celle dans la base de données
+        if ($request->input('username') !== $user->username) {
+            $user->username = $request->input('username');
+        }
+
+        if ($request->input('firstname') !== $user->firstname) {
+            $user->firstname = $request->input('firstname');
+        }
+
+        if ($request->input('lastname') !== $user->lastname) {
+            $user->lastname = $request->input('lastname');
+        }
+
+        if ($request->input('email') !== $user->email) {
+            $user->email = $request->input('email');
+        }
+
+        $password = $request->input('password');
+        if (!empty($password)) {
+            // Mettre à jour le mot de passe seulement s'il est renseigné
+            $user->password = Hash::make($password);
+        }
+
+        if ($request->input('role') !== $user->role_id) {
+            $user->role_id = $request->input('role');
+        }
+
+        $is_active = boolval($request->input('is_active'));
+        if ($is_active !== $user->is_active) {
+            $user->is_active = $is_active;
+        }
 
         $user->save();
 
-        return Redirect::to('/users')->withOk("L'utilisateur a été modifié.");
+        return redirect('/users')->withOk("L'utilisateur a été modifié.");
     }
+
+    // public function update(Request $request)
+    // {
+    //     $user = User::find(1);
+    //     $user->username = $request->username;
+    //     $user->firstname = $request->firstname;
+    //     $user->lastname = $request->lastname;
+    //     $user->email = $request->email;
+    //     $user->password = Hash::make($request->password);
+    //     $user->role_id = $request->role;
+    //     if ($request->is_active === "on") $user->is_active = true;
+    //     else $user->is_active = false;
+
+    //     $user->save();
+
+    //     return Redirect::to('/users')->withOk("L'utilisateur a été modifié.");
+    // }
 
     public function active(Request $request)
     {

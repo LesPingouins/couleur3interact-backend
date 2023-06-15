@@ -3,8 +3,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('storage/img/profile/AdminLTELogo.png') }}" alt="AdminLTELogo"
-                height="60" width="60">
+            <img class="animation__shake" src="{{ asset('storage/img/profile/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
         </div>
 
         <x-navbar />
@@ -51,7 +50,7 @@
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <!-- Conversations are loaded here -->
-                                    <iframe width="100%" height="100%" src="http://localhost:5173/">
+                                    <iframe width="100%" height="100%" src="http://localhost:5174/">
                                     </iframe>
                                     <!--/.direct-chat-messages-->
                                 </div>

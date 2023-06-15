@@ -31,6 +31,12 @@ Sur cette base nous avons alors développé une application de chat portable, qu
 
 Ce back-end permet de faire fonctionner le chat grâce aux websockets (Pusher) mais aussi de faire la connexion avec la base de données. Il possède aussi une mini-application permettant de gérer le chat via plusieurs fonctionnalités. 
 
+### Développé avec
+
+* [![Laravel][Laravel.com]][Laravel-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![JQuery][JQuery.com]][JQuery-url]
+
 <p align="right">(<a href="#retour-en-haut">retour en haut</a>)</p>
 
 ## Installation
@@ -52,14 +58,14 @@ Il vous faudra ensuite créer le fichier .env à la racine du projet
 
 Exemple provenant du repo de laravel : [.env](https://github.com/laravel/laravel/blob/10.x/.env.example)
 
-Générer ensuite une clé d'application
+Générez ensuite une clé d'application
 
 ```bash
 # Génération de la clé
 $ php artisan key:generate
 ```
 
-Modifier ensuite dans le .env vos informations de connexion à votre base de données PGSQL.
+Modifiez ensuite dans le .env vos informations de connexion à votre base de données PGSQL.
 
 ```bash
 DB_CONNECTION=pgsql
@@ -71,6 +77,19 @@ DB_PASSWORD=[Votre mot de passe]
 ```
 
 Dans certains cas, il se peut que vous n'ayez pas activé l'extension pgsql dans votre php.ini. Pour l'activer, rendez-vous dans votre fichier php.ini et trouvez la ligne de l'extension qui est en commentaire : ";extension=pgsql"
+
+Configurez aussi Pusher dans le .env afin que le chat puisse fonctionner.
+```bash
+BROADCAST_DRIVER=pusher
+...
+PUSHER_APP_ID=local
+PUSHER_APP_KEY=local
+PUSHER_APP_SECRET=local
+PUSHER_HOST=127.0.0.1
+PUSHER_PORT=6001
+PUSHER_SCHEME=http
+PUSHER_APP_CLUSTER=mt1
+```
 
 Exécutez ensuite les migrations et les seeders
 
@@ -139,3 +158,12 @@ Back-end : [Couleur 3 Interact / Back-end](https://github.com/LesPingouins/coule
 Front-end : [Couleur 3 Interact / Front-end](https://github.com/LesPingouins/couleur3interact-frontend)
 
 <p align="right">(<a href="#retour-en-haut">retour en haut</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[Laravel-url]: https://laravel.com
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com 

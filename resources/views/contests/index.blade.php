@@ -82,7 +82,7 @@
                                                         </div>
                                                     </td>
                                                     <td><a class="btn btn-primary"
-                                                            href="{{ route('contests.edit', ['id' => $event->id]) }}"
+                                                            href="#"
                                                             role="button"><i
                                                                 class="fa-solid fa-pen align-middle"></i></a>
                                                     </td>

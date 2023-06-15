@@ -38,7 +38,7 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form method="POST" action="{{route('users.update')}}" accept-charset="UTF-8">
+                                <form method="POST" action="{{ route('users.update', ['id' => $user->id]) }}" accept-charset="UTF-8">
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">

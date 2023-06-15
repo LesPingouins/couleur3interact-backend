@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ContestController;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -38,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/form/add', [UserController::class, 'create'])->middleware(['auth', 'verified'])->name('users.create');
     Route::post('/users/store', [UserController::class, 'store'])->middleware(['auth', 'verified'])->name('users.store');
     Route::get('/users/form/edit/{id}', [UserController::class, 'edit'])->middleware(['auth', 'verified'])->name('users.edit');
-    Route::post('/users/update', [UserController::class, 'update'])->middleware(['auth', 'verified'])->name('users.update');
+    Route::post('/users/update/{id}', [UserController::class, 'update'])->middleware(['auth', 'verified'])->name('users.update');
     Route::post('/users/delete/{id}', [UserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('users.delete');
     Route::post('/users/active/{id}', [UserController::class, 'active'])->middleware(['auth', 'verified'])->name('users.active');
 });
@@ -55,6 +56,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/polls/create', [PollController::class, 'create'])->middleware(['auth', 'verified'])->name('polls.create');
     Route::get('/polls/edit', [PollController::class, 'edit'])->middleware(['auth', 'verified'])->name('polls.edit');
     Route::post('/polls/store', [PollController::class, 'store'])->middleware(['auth', 'verified'])->name('polls.store');
+});
+
+//Contests
+Route::middleware('auth')->group(function () {
+    Route::get('/contests', [ContestController::class, 'index'])->middleware(['auth', 'verified'])->name('contests.index');
+    Route::get('/contests/create', [ContestController::class, 'create'])->middleware(['auth', 'verified'])->name('contests.create');
+    Route::get('/contests/edit', [ContestController::class, 'edit'])->middleware(['auth', 'verified'])->name('contests.edit');
+    Route::post('/contests/store', [ContestController::class, 'store'])->middleware(['auth', 'verified'])->name('contests.store');
 });
 
 

@@ -42,12 +42,6 @@
                                     <p>Afficher</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ route('chat.history') }}" class="nav-link">
-                                    <i class="fa-solid fa-book nav-icon"></i>
-                                    <p>Historique</p>
-                                </a>
-                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -65,12 +59,6 @@
                                     <p>Liste des utilisateurs</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
-                                    <i class="fa-solid fa-list nav-icon"></i>
-                                    <p>Liste des bannis</p>
-                                </a>
-                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -82,74 +70,20 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('contests.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-gift"></i>
                             <p>
                                 Concours
-                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
-                                    <i class="far fa-square-plus nav-icon"></i>
-                                    <p>Ajouter</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
-                                    <i class="fa-solid fa-pen-to-square nav-icon"></i>
-                                    <p>Modifier</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index3.html" class="nav-link">
-                                    <i class="far fa-square-minus nav-icon"></i>
-                                    <p>Supprimer</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
-                                    <i class="fa-solid fa-trophy nav-icon"></i>
-                                    <p>Liste des gagnants</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
-                                    <i class="fa-solid fa-book nav-icon"></i>
-                                    <p>Historique</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-bullhorn"></i>
                             <p>
                                 Annonces
-                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
-                                    <i class="far fa-square-plus nav-icon"></i>
-                                    <p>Ajouter</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
-                                    <i class="fa-solid fa-pen-to-square nav-icon"></i>
-                                    <p>Modifier</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index3.html" class="nav-link">
-                                    <i class="far fa-square-minus nav-icon"></i>
-                                    <p>Supprimer</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('roles') }}" class="nav-link">
@@ -177,19 +111,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="fa-solid fa-user-tie nav-icon"></i>
                                     <p>Administrateur</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="fa-solid fa-user nav-icon"></i>
                                     <p>Utilisateur</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index3.html" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="fa-solid fa-user-gear nav-icon"></i>
                                     <p>Modérateur</p>
                                 </a>

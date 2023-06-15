@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\PollController;
@@ -37,6 +38,10 @@ Route::post('polls/disable', [PollController::class, 'disablePolls']);
 Route::get('polls/{id}', [PollController::class, 'getAPoll']);
 Route::post('polls/{id}/inactive', [PollController::class, 'setAPollInactive']);
 Route::get('polls/{id}/answers', [PollController::class, 'getAnswersFromAPoll']);
+Route::get('polls/{id}/answers/same', [PollController::class, 'getSameAnswersFromAPoll']);
+Route::post('polls/{id}/answers', [PollController::class, 'sendAnswerToAPoll']);
 
 Route::get('event/active', [EventController::class, 'getLatestActiveEvent']);
 //Route::get('Answers/{id}', [PollController::class, 'getAnswersFromAPoll']);
+
+//Route::get('answers/{id}/same', [AnswerController::class, 'getSameAnswersFromAPoll']);

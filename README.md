@@ -52,14 +52,14 @@ Il vous faudra ensuite créer le fichier .env à la racine du projet
 
 Exemple provenant du repo de laravel : [.env](https://github.com/laravel/laravel/blob/10.x/.env.example)
 
-Générer ensuite une clé d'application
+Générez ensuite une clé d'application
 
 ```bash
 # Génération de la clé
 $ php artisan key:generate
 ```
 
-Modifier ensuite dans le .env vos informations de connexion à votre base de données PGSQL.
+Modifiez ensuite dans le .env vos informations de connexion à votre base de données PGSQL.
 
 ```bash
 DB_CONNECTION=pgsql
@@ -71,6 +71,17 @@ DB_PASSWORD=[Votre mot de passe]
 ```
 
 Dans certains cas, il se peut que vous n'ayez pas activé l'extension pgsql dans votre php.ini. Pour l'activer, rendez-vous dans votre fichier php.ini et trouvez la ligne de l'extension qui est en commentaire : ";extension=pgsql"
+
+Configurez aussi Pusher dans le .env afin que le chat puisse fonctionner.
+```bash
+PUSHER_APP_ID=local
+PUSHER_APP_KEY=local
+PUSHER_APP_SECRET=local
+PUSHER_HOST=127.0.0.1
+PUSHER_PORT=6001
+PUSHER_SCHEME=http
+PUSHER_APP_CLUSTER=mt1
+```
 
 Exécutez ensuite les migrations et les seeders
 

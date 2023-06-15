@@ -31,6 +31,12 @@ Sur cette base nous avons alors développé une application de chat portable, qu
 
 Ce back-end permet de faire fonctionner le chat grâce aux websockets (Pusher) mais aussi de faire la connexion avec la base de données. Il possède aussi une mini-application permettant de gérer le chat via plusieurs fonctionnalités. 
 
+### Développé avec
+
+* [![Laravel][Laravel.com]][Laravel-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![JQuery][JQuery.com]][JQuery-url]
+
 <p align="right">(<a href="#retour-en-haut">retour en haut</a>)</p>
 
 ## Installation
@@ -74,6 +80,8 @@ Dans certains cas, il se peut que vous n'ayez pas activé l'extension pgsql dans
 
 Configurez aussi Pusher dans le .env afin que le chat puisse fonctionner.
 ```bash
+BROADCAST_DRIVER=pusher
+...
 PUSHER_APP_ID=local
 PUSHER_APP_KEY=local
 PUSHER_APP_SECRET=local
@@ -150,3 +158,12 @@ Back-end : [Couleur 3 Interact / Back-end](https://github.com/LesPingouins/coule
 Front-end : [Couleur 3 Interact / Front-end](https://github.com/LesPingouins/couleur3interact-frontend)
 
 <p align="right">(<a href="#retour-en-haut">retour en haut</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[Laravel-url]: https://laravel.com
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com 

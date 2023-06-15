@@ -33,26 +33,14 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header row align-items-center">
-                                    <div class="col-6">
+                                    <div class="col-9">
                                         <h3 class="card-title">Liste des concours</h3>
                                     </div>
 
-                                    <div class="col-3">
-                                        <div class="card-tools">
-                                            <div class="input-group input-group-sm">
-                                                <input type="text" name="table_search" class="form-control" placeholder="Search">
 
-
-                                                <div class="input-group-append">
-                                                    <button type="submit" class="btn btn-default">
-                                                        <i class="fas fa-search"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-3">
-                                        <a class="btn btn-success" href="{{ route('contests.create') }}" role="button"><i class="fa-solid fa-plus align-middle"></i> Ajouter un
+                                        <a class="btn btn-success" href="#" role="button"><i
+                                                class="fa-solid fa-plus align-middle"></i> Ajouter un
                                             concours</a>
                                     </div>
                                 </div>
@@ -74,23 +62,31 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($events as $event)
-                                            <tr>
-                                                <td>{{ $event->id }}</td>
-                                                <td>{{ $event->name_of }}</td>
-                                                <td>{{ $event->question }}</td>
-                                                <td>{{ $event->duration }}</td>
-                                                <td>Concours</td>
-                                                <td>{{ $event->user->username }}</td>
-                                                <td>
+                                                <tr>
+                                                    <td>{{ $event->id }}</td>
+                                                    <td>{{ $event->name_of }}</td>
+                                                    <td>{{ $event->question }}</td>
+                                                    <td>{{ $event->duration }}</td>
+                                                    <td>Concours</td>
+                                                    <td>{{ $event->user->username }}</td>
+                                                    <td>
 
-                                                    <div class="custom-control custom-switch">
-                                                        <input type="checkbox" {{ $event->is_active ? 'checked' : '' }} class="custom-control-input" data-id="{{ $event->id }}" id="slider{{ $event->id }}" />
-                                                        <label class="custom-control-label" for="slider{{ $event->id }}"></label>
-                                                    </div>
-                                                </td>
-                                                <td><a class="btn btn-primary" href="{{ route('contests.edit', ['id' => $event->id]) }}" role="button"><i class="fa-solid fa-pen align-middle"></i></a>
-                                                </td>
-                                            </tr>
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox"
+                                                                {{ $event->is_active ? 'checked' : '' }}
+                                                                class="custom-control-input"
+                                                                data-id="{{ $event->id }}"
+                                                                id="slider{{ $event->id }}" />
+                                                            <label class="custom-control-label"
+                                                                for="slider{{ $event->id }}"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td><a class="btn btn-primary"
+                                                            href="{{ route('contests.edit', ['id' => $event->id]) }}"
+                                                            role="button"><i
+                                                                class="fa-solid fa-pen align-middle"></i></a>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>

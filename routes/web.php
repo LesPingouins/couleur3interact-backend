@@ -3,7 +3,6 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\PollController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -19,18 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
+//Chat 
 Route::get('/chat', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('chat');
 
-Route::get('/chat/history', function () {
-    return "test";
-})->middleware(['auth', 'verified'])->name('chat.history');
-
+//Roles
 Route::get('/roles', [RoleController::class, 'index'])->middleware(['auth', 'verified'])->name('roles');
 
 //Users
@@ -66,13 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/contests/store', [ContestController::class, 'store'])->middleware(['auth', 'verified'])->name('contests.store');
 });
 
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
+//Logout
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware(['auth', 'verified'])->name('logout');
 
 require __DIR__ . '/auth.php';
